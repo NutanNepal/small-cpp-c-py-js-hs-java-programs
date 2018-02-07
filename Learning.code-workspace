@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "JavaScript"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
