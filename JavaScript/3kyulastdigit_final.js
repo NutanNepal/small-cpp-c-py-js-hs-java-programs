@@ -1,12 +1,13 @@
+//incomplete
+
 function lastDigit(listofnumbers){
     if (listofnumbers.length == 0){
         return 1;
     }
+    lastofstr1 = Number(String(listofnumbers[0]).slice(-1));
     if (listofnumbers.length == 1){
-        return Number(String(listofnumbers[0]).slice(-1));
+        return lastofstr1;
     }
-  lastofstr1 = Number(String(listofnumbers[0]).slice(-1));
-  if (lastofstr1 && !(listofnumbers[1])){ return 1; }
   var last = {
     2 : [6,2,4,8],
     4 : [6, 4],
@@ -15,16 +16,6 @@ function lastDigit(listofnumbers){
     8 : [6,8,4,2],
     9 : [1, 9]
   };
-  switch (lastofstr1){
-      case 0: if (!listofnumbers[1] && !listofnumbers[0]){ return 1; }
-      case 1:
-      case 5:
-      case 6: return lastofstr1;
-      case 4:
-      case 9: n = 2;
-      break;
-      default: n = 4;
-  }
 
 check_with = checkzeroes(listofnumbers[-2], listofnumbers[-1]);
 for (i = 1; i < listofnumbers.length; i++){
@@ -57,4 +48,3 @@ function checkzeroes(x, y){
     if (!x){ return 0;}
     return 1;
 }
-
