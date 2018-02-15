@@ -28,7 +28,7 @@ var lastDigit = function(str1, str2){
         break;
         case 8: return ([6,8,4,2])[modulo(str2, 4)];
         break;
-        case 9: return ([1,9)[modulo(str2, 2)];
+        case 9: return ([1,9])[modulo(str2, 2)];
         break;
     }
   }
