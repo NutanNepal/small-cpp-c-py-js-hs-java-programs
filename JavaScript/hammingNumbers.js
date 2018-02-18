@@ -1,7 +1,6 @@
 function hamming(n){
     console.log("returning for " + n);
     if (n == 1 ){ return 1;}
-    hammingers = [2, 3, 5];
     var x = y = z = 0;
     hammers = [1];
     index = 0;
