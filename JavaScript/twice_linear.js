@@ -10,5 +10,4 @@ function dblLinear(n){
     }
     return sequence[n];
 }
-
 console.log(dblLinear(20));

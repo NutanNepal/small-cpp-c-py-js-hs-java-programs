@@ -32,4 +32,4 @@ def countmoore(matrix, i, j):
     return count
 
 print(next_gen([[0,1,1,1,0,1], [0,0,0,1,0,0], [1,0,0,1,0,1], [1,1,1,0,1,1]]))
-print([1,2,3,4][1])
+#print([1,2,3,4][1])
