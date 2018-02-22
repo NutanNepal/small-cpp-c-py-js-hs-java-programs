@@ -1,16 +1,13 @@
-
-
 def sum_pairs(_list, sum):
-    listolist = [[]]
-    max = len(_list)
-    _list2 = []
-    _list2[:] = [sum-x for x in list1]
-    print (_list2)
-    for i in range (0, max):
-        list1 = [a[:i]+a[i+1:] for a in _list]
-        list2 = [a[:i]+a[i+1:] for a in _list2]
-        x = [i for i, j in zip()]
-    if not listolist:
-        return None
-    else:
-        return listolist[-1]
+    dict_ = dict(zip(_list,[sum-x for x in _list]))
+    index = len(_list) - 1
+    while True:
+        try:
+            return [_list[index], _list[_list.index(dict_[_list[index]], index + 1)]]
+        except ValueError:
+            index -= 1
+        except IndexError:
+            break
+    return None
+
+print(sum_pairs([1, 2, 3, 4, 1, 0] , 2))

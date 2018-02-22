@@ -1,0 +1,3 @@
+function properfracs(num){
+    
+}

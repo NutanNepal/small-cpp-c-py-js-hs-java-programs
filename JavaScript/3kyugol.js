@@ -56,7 +56,7 @@ function getGeneration(cells, generations){
     function checkBoundaries(current_generation){
         if (current_generation[0].includes(1) || current_generation[current_generation.length - 1].includes(1)){ return true; }      //check alive cells at top and bottom
         for (i = 1; i < current_generation.length - 1; i++){
-            if(current_generation[i][0] == 1 || current_generation[i][current_generation.length - 1] == 1){ return true; }           //check alive cells at the sides
+            if(current_generation[i][0] == 1 || current_generation[i][current_generation[0].length - 1] == 1){ return true; }           //check alive cells at the sides
         }
         return false;                                                           //return false if boundary is dead
     }
@@ -75,12 +75,11 @@ function getGeneration(cells, generations){
     function countmoore(current_generation, x, y){
         /* count moore neighborhoods */
         count = 0;
-        z = [-1, 0, 1];
-        for (i = 0; i < 3; i++){
-            for (j = 0; j < 3; j++){
+        for (i = -1; i <=1 ; i++){
+            for (j = -1; j <= 1; j++){
                 try{
-                    if (!(x + z[i] < 0 || y + z[j] < 0)){
-                        if (current_generation[x + z[i]][y + z[j]] && !(z[i] == 0 && z[j] == 0)){ count ++ ; }
+                    if (!(x + i < 0 || y + j < 0)){
+                        if (current_generation[x + i][y + j] && !(i == 0 && j == 0)){ count ++ ; }
                     }
                 }
                 catch(RangeError){ ; }

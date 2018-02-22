@@ -1,64 +1,41 @@
-"""def proper_fractions(denominator):
-    if denominator == 1:
-        return 0
-    factors = [x for x in range(2, denominator) if not denominator % x]
-    if not factors:
-        return denominator - 1
-    primefactors = list(set(factors) - set([x for x in factors for y in factors if y < x and not x % y]))
-    if denominator % 2:
-        allnumsexceptone = [x for x in range (2, denominator)]
-    else:
-        allnumsexceptone = [x for x in range (3, denominator, 2)]
-    tosubtract = [x for x in allnumsexceptone for y in primefactors if not x % y]
-    return len(allnumsexceptone) - len(set(tosubtract)) + 1
-
-print(proper_fractions(19719719))"""
-
-def getprimefactors(denominator):
-    """"start getting factors of denominator"""
-    factors = []
-    divisor = 3
-    if not denominator % 2:
-        factors.append(2)
-    while divisor <= denominator / 2:
-        if not denominator % divisor:
-            factors.append(divisor)
-        divisor += 2
-
-    primefactors = list(set(factors) - set([x for x in factors for y in factors if y < x and not x % y]))
-    return primefactors
-
-def isPrime(num):
-    if not num % 2:
-        return False
-    divisor = 3
-    upperbound = num
-    while divisor <= upperbound:
-        if not num % divisor:
-            return False
-        upperbound = num / divisor
-        divisor += 2
-    return True
-        
+import time
 def proper_fractions(denominator):
-    if isPrime(denominator):
-        return denominator - 1
-    primefactors = getprimefactors(denominator)
-    
-    multiply = 1
-    for x in primefactors:
-        multiply *= x
-    if multiply == denominator:
-        return mainproper(denominator, primefactors)
-    else:
-        lesserval = mainproper(multiply, primefactors)
-        return int(lesserval * (denominator/multiply))
+    numproperfracs = denominator
+    if not denominator % 2:
+        numproperfracs -= numproperfracs//2
+    stack = [2]
+    i=3
+    while (numproperfracs > 0) and (i < denominator//2):
+        flag = True
+        for y in stack:
+            if not i % y:
+                flag = False
+        if flag:
+            if not denominator % i:
+                numproperfracs -= numproperfracs//i
+            stack.append(i)
+        print(stack)
+        i += 2
 
-def mainproper(denominator, primefactors):
-    if denominator == 1:
-        return 0
-    if denominator % 2:
-        tosubtract = [x for x in range(2, denominator) for y in primefactors if not x % y]
-    else:
-        tosubtract = [x for x in range(3, denominator, 2) for y in primefactors if not x % y]
-    return denominator - len(set(tosubtract)) - 1 if denominator % 2 else int(denominator/2) - len(set(tosubtract))
+    if numproperfracs == denominator:
+        return numproperfracs - 1
+    return numproperfracs
+
+#9999999 should get 6637344
+print(proper_fractions(15))
+print(proper_fractions(9999999))
+'''start = time.time()
+for i in range (5):
+    print(proper_fractions(15))
+    print(proper_fractions(15895613))
+    print(proper_fractions(895613))
+    print(proper_fractions(81000156))
+    print(proper_fractions(19889563))
+    print(proper_fractions(19719719))
+    print(proper_fractions(568956))
+    print(proper_fractions(1532420))
+    print(proper_fractions(500000003))
+    print(proper_fractions(9999999))
+
+end = time.time()
+print ("run time = ", end - start)'''
