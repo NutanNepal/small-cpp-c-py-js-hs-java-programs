@@ -13,3 +13,5 @@ var cutLog = function(p, n) {
     solution = price[n];
     return solution; // Good luck intern!
 }
+
+console.log(cutLog([0,1,2], 2))

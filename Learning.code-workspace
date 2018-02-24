@@ -5,7 +5,9 @@
 		}
 	],
 	"settings": {
-		"git.ignoreLimitWarning": true
-	}
-	
+		"git.ignoreLimitWarning": true,
+		"python.pythonPath": "C:\\Program Files\\Python36\\python.exe",
+		"haskelly.exec.reuseTerminal": true
+	},
+
 }
