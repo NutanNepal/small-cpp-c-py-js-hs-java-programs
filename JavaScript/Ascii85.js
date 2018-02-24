@@ -17,7 +17,7 @@ String.prototype.toAscii85 = function (){
             getAscii85 = String.fromCharCode(Remainder + 33) + getAscii85;      //get the asii at remainder+33
         }
         if (strlen > 3){
-        encoded += (getAscii85 == '!!!!!')? 'z' : getAscii85;                                                  //decoded
+        encoded += (getAscii85 == '!!!!!')? 'z' : getAscii85;                     //if !!!!!, replace with z    //decoded
         }
         else{
         encoded += getAscii85;
@@ -28,19 +28,19 @@ String.prototype.toAscii85 = function (){
 };
     
 String.prototype.fromAscii85 = function (){
-    string_input = this.replace(/\s/g,'').replace(/z/g,'!!!!!').slice(2, -2);
+    string_input = this.replace(/\s/g,'').replace(/z/g,'!!!!!').slice(2, -2);   //replace all whitespaces with nth and all z's with "!!!!!'"
     strlen = string_input.length;
     string_input = (strlen % 5)? string_input+ Array(5 - strlen % 5).fill('u').join(''): string_input;  //pad with u if not length % 5 == 0
     decoded = '';
     for (i = 0; i < strlen; i += 5){
         getint= 0;
         for (j=0; j < 5; j++){
-            getint += Math.pow(85,4-j) * (string_input.charCodeAt(i+j) - 33);
+            getint += Math.pow(85,4-j) * (string_input.charCodeAt(i+j) - 33);   //get ascii, add 33, then convert to equivalent int from the 5 chars block
         }
-        get32bits = ("00000000000000000000000000000000" + getint.toString(2)).substr(-32);
+        get32bits = ("00000000000000000000000000000000" + getint.toString(2)).substr(-32);  //convert the int to 32 bit binary
         getchars = ''
         for (k= 0; k < 4; k++){
-            getchars += String.fromCharCode(parseInt(get32bits.slice(0, 8), 2));
+            getchars += String.fromCharCode(parseInt(get32bits.slice(0, 8), 2));    //divide 32bit binary into 4, get chars of the int val of each block
             get32bits = get32bits.slice(8);
         }
         decoded += getchars;
