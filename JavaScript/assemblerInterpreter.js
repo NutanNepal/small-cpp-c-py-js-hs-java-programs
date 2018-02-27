@@ -1,0 +1,3 @@
+function interpreter(program){
+    
+}

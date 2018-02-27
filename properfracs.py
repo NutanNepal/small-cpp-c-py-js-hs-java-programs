@@ -1,24 +1,27 @@
 import time
-
 def getprimefactors(denominator):
     """start getting factors of denominator"""
-    factors = []
-    divisor = 3
+    factors = set()
     if not denominator % 2:
-        factors.append(2)
-    while divisor <= denominator / 2:
+        factors.add(2)
+        factors.add(denominator//2)
+    divisor, j = 3, denominator / 2
+    while divisor <= j:
         if not denominator % divisor:
-            factors.append(divisor)
+            j = denominator//divisor
+            factors.add(divisor)
+            factors.add(j)
         divisor += 2
     #for prime factors. getting the list of composite factors
     #and subtracting it from factors
-    primefactors = list(set(factors) - set([x for x in factors for y in factors if y < x and not x % y]))
+    primefactors = factors - set(x for x in factors for y in factors if y < x and not x % y)
     return primefactors
 
 def isPrime(num):
     """check for the primality of the number to avoid further
     unnecessary calculations
     This function returns isPrime(2) as False"""
+    if num == 2: return True
     if not num % 2:
         return False
     divisor = 3
@@ -42,33 +45,23 @@ def proper_fractions(denominator):
     """
     if denominator == 1:
         return 0
+
     if isPrime(denominator):
         #print("PRIME, baby!!")
         return denominator - 1
     primefactors = getprimefactors(denominator)
-
     multiply = 1
+    relativeprimes = 1
     for prime in primefactors:
         multiply *= prime
+        relativeprimes *= prime - 1
     if multiply == denominator:
-        return mainproper(denominator, primefactors)
+        return relativeprimes
     else:
-        lesserval = mainproper(multiply, primefactors)
-        return int(lesserval * (denominator/multiply))
+        return int(relativeprimes * (denominator/multiply))
 
-def mainproper(denominator, primefactors):
-    """this function gets the number of relative primes < denominator
-    for nums whose prime factors are its only factors"""
-    flag = denominator % 2
-    if flag:
-        tosubtract = [x for x in range(2, denominator) for y in primefactors if not x % y]
-    else:
-        tosubtract = [x for x in range(3, denominator, 2) for y in primefactors if not x== 2 and not x % y]
-    return denominator - len(set(tosubtract)) - 1 if flag else int(denominator/2) - len(set(tosubtract))
-
-#9999999 should get 6637344
 start = time.time()
-"""for i in range (5):
+for i in range (5):
     print(proper_fractions(5))
     print(proper_fractions(15895613))
     print(proper_fractions(895613))
@@ -78,7 +71,7 @@ start = time.time()
     print(proper_fractions(568956))
     print(proper_fractions(1532420))
     print(proper_fractions(500000003))
-    print(proper_fractions(9999999))"""
+    print(proper_fractions(9999999))
 
 end = time.time()
 print ("run time = ", end - start)
