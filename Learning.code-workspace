@@ -1,12 +1,7 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"git.ignoreLimitWarning": true,
-		"python.pythonPath": "C:\\Program Files\\Python36\\python.exe",
-	},
-
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
 }

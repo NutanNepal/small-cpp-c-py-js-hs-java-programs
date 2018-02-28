@@ -10,7 +10,7 @@ console.log(x)
 myownrange=(a,x,y,t=0)=>a.map(z=>t+=z<x^z<=y)|t;
 console.log(myownrange(numbers, 2, 8));
 
-modulus4;
+//modulus4;
 /*
 checkRange=(a,x,y)=>a.filter(z=>x<=z&z<=y).length
 checkRange=(a,x,y)=>a.filter(z=>!(x>z|z>y)).length
