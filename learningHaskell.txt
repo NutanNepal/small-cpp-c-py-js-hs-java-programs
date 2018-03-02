@@ -1,0 +1,26 @@
+Haskell list functions:
+  head
+  tail
+  last
+  init
+
+  length
+  null
+  reverse
+  elem
+  !!
+
+  take
+  drop
+
+  maximum
+  minimum
+
+  sum
+  product
+
+  [1..22], [2,4..20], [20,19..1]
+  ['a'..'z']
+
+  take 10(cycle [1,2,3])
+  take 10(repeat 5) = replicate 10 5

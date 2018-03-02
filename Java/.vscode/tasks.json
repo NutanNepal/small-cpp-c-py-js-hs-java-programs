@@ -1,20 +1,26 @@
 {
     "version": "2.0.0",
-    "command": "node",
-    "shell": true,
+    "command": "javac",
+    "type": "shell",
     "args": [
         "--harmony"
     ],
 
     "tasks": [
         {
-            "label": "runFile",
-            "group": "test",
+            "label": "java",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
             "presentation":{
                 "reveal": "always"
-            },
+            } ,
             "problemMatcher": "$jshint",
             "args": ["${file}"]
         }
-    ]
+
+        
+    ],
+    "problemMatchers": []
 }

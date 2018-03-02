@@ -1,4 +1,3 @@
 main = do
-    print "Hello World"
-    print "run please"
-    
+    let x =[ 2*a | a<-[1..10]]
+    print(x)

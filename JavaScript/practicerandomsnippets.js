@@ -6,9 +6,13 @@ getresult=(a,t=0)=>a.map(z=>t+=2*z)|t;
 console.log(getresult(numbers));
 x = true
 x += 2<3|3>5
-console.log(x)
+console.log("x = " + x)
 myownrange=(a,x,y,t=0)=>a.map(z=>t+=z<x^z<=y)|t;
 console.log(myownrange(numbers, 2, 8));
+console.log('1'+'1' - 1);
+console.log(1 + 1 + '1' + 1 - 1 + '1');
+
+console.log(0.11 * 0.4);
 
 //modulus4;
 /*

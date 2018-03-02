@@ -1,0 +1,7 @@
+{
+	"version": "0.1.0",
+	"command": "javac",
+	"showOutput": "always",
+	"isShellCommand": true,
+	"args": ["-d","${workspaceRoot}\\java","${workspaceRoot}\\java\\*.java"]
+}
