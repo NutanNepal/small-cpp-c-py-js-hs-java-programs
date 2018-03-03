@@ -5,24 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "Debug (Launch)",
+            "type": "node",
             "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopOnEntry": false,
-            "mainClass": "",
-            "args": ""
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-Shell",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopOnEntry": false,
-            "mainClass": "Shell",
-            "args": ""
+            "name": "Launch Program",
+            "program": "${file}"
         }
     ]
 }

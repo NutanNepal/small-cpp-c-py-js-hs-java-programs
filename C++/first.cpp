@@ -8,13 +8,9 @@ class Fruit{
 		string taste;
 		int nutritionval;
 	public:
-		void setname(string somename){
+		void setproperties(string somename, string taste1, int val){
 			name = somename;
-		}
-		void settaste(string taste1){
 			taste = taste1;
-		}
-		void setnutrition(int val){
 			nutritionval = val;
 		}
 		string getname(){
@@ -39,35 +35,24 @@ int main()
 	cin >> num;
 	Fruit Apple;
 	Fruit Banana;
+
+	cout << "What do you call it?" << endl;
+	cin >> namee;
+	cout << "How was the fruit?" << endl;
+	cin >> tastee;
+	cout << "Enter the nutrition value: ";
+	cin >> nutritionvalue;
 	switch (num){
 		case 1:
-			
-			cout << "What do you call it?" << endl;
-			cin >> namee;
-			Apple.setname(namee);
-			cout << "How was the apple?" << endl;
-			cin >> tastee;
-			Apple.settaste(tastee);
-			cout << "Enter the nutrition value: ";
-			cin >> nutritionvalue;
-			Apple.setnutrition(nutritionvalue);
+			Apple.setproperties(namee, tastee, nutritionvalue);
 			break;
 		case 2:
-			
-			cout << "What do you call it?" << endl;
-			cin >> namee;
-			Banana.setname(namee);
-			cout << "How was the Banana?" << endl;
-			cin >> tastee;
-			Banana.settaste(tastee);
-			cout << "Enter the nutrition value: ";
-			cin >> nutritionvalue;
-			Banana.setnutrition(nutritionvalue);
+			Banana.setproperties(namee, tastee, nutritionvalue);
 	}
 
 	cout << "What do u want to know about ur fruit?" << endl;
 	cout << "1. name" << endl;
-	cout << "2. taste\n 3. nutritionvalue" << endl;
+	cout << "2. taste\n3. nutritionvalue" << endl;
 	cin >> propertychoice;
 	if (num == 1){
 		switch (propertychoice){
