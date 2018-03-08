@@ -1,43 +1,30 @@
-function checkWord (inputboard, word){
-    var board = JSON.parse(JSON.stringify(inputboard));                 //deep copy the board since it'll be changed when running
-    var returnval = false;
-    indexoffirstchar = [];
-    for (var i = 0; i < board.length; i++){
-        for (var j = 0; j < board[0].length; j++){
-            if (word[0]==board[i][j]){
-                indexoffirstchar.push([i, j]);
-            }
-        }
-    }
-    if (indexoffirstchar.length == 0){                              //return false if the first letter doesn't exist
-        return false;
-    }
-    //if length is one, return true because it exists in the matrix
-    if (word.length == 1){ return true; }
-    for (var i = 0; i < indexoffirstchar.length; i++){
-            var _board2 = JSON.parse(JSON.stringify(inputboard));
-            _board2[indexoffirstchar[i][0]][indexoffirstchar[i][1]] = 0;
-            returnval = torecurse(_board2, word.slice(1), indexoffirstchar[i]);
-            if (returnval){ break; }
-        }
-    return returnval;
-}
-function torecurse(inputboard, word, position){
-    var currentcharlist = getMoore(inputboard, position[0], position[1], word[0]);
-    if (currentcharlist.length == 0){
-        return false; }
+function checkWord (inputboard, word, position){
+    if (typeof position == 'undefined'){
+        var currentcharlist = forfirstletter(inputboard, word[0]);}
+    else {var currentcharlist = getMoore(inputboard, position[0], position[1], word[0]);}
+    if (currentcharlist.length == 0){ return false; }
     if (word.length == 1){ return true; }
     var returnval = false;
     var word = word.slice(1);
     for (var i = 0; i < currentcharlist.length; i++){
         var board = JSON.parse(JSON.stringify(inputboard));
-        board[position[0]][position[1]] = 0;
-        returnval = torecurse(board, word, currentcharlist[i]);
-        if (returnval == true){ break; }
+        if (typeof position != 'undefined'){ board[position[0]][position[1]] = 0; }
+        returnval = checkWord(board, word, currentcharlist[i]);
+        if (returnval){ break; }
     }
     return returnval;
 }
-
+function forfirstletter(inputboard, letter){
+    var indexoffirstchar = [];
+    for (var i = 0; i < board.length; i++){
+        for (var j = 0; j < board[0].length; j++){
+            if (letter==board[i][j]){
+                indexoffirstchar.push([i, j]);
+            }
+        }
+    }
+    return indexoffirstchar;
+}
 function getMoore(theboard, x, y, nextchar){
     nextcharlist = [];
     for (var i = -1; i <=1 ; i++){
@@ -51,7 +38,7 @@ function getMoore(theboard, x, y, nextchar){
             catch(RangeError){ ; }
         }
     }
-    return nextcharlist.slice();
+    return nextcharlist;
 }
 
 theboard = [

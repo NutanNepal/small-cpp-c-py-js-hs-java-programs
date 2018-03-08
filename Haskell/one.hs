@@ -1,3 +1,3 @@
 main = do
-    let primes = 2 : [x | x <- [3,5..100], y <- primes, x `mod` y \=0]
+    let primes = [x|x<-[1,2..20]]
     print(primes)
