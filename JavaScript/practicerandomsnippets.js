@@ -1,25 +1,24 @@
-
-palindrome=(n,c)=>c+c[0].repeat(n-2*c.length)+c.split('').reverse().join('')
-//console.log(palindrome(10, 'abc'));
+palindrome=(n,c)=>c+c[0].repeat(n-2*c.length)+c.split('').reverse().join('');
 astring= 'abcdef'
 sum10=(s,k=0,t=false)=>s.split('').map(z=>t=(z&1)&(s[k+4]==(10-z)), k++)|t;
-//console.log(sum10('abc1???9bvd'));
 x=[0,0,1,2,3,0,0]
-//console.log(x.lastIndexOf(true|0));
-
 removeZeros=a=>a;
-
 circleIntersection=(a,b,r)=>a;
-
-
 snailCoordinate=n=>[,-n,2,n][n%4]+1>>1;
 reverse=(a)=>a.reduce((z,t)=>t+=z)
-random=(a,b,c=b)=>c;
-var omnibool = true << omnibool;
-console.log(omnibool);
-console.log(omnibool == true);
-console.log(omnibool == false);
-//console.log(random(2,3));
+random=(c)=>c.reduce((z,t)=>t+z);
+console.log(random([1,2,3,4,5]));
+zeroOrOnw=(n,s)=>s.map((a,b)=>a.map());
+zeroOrOne=(n,s)=>s.reduce((a,b)=>a.map((c,d)=>c+b[d])).map(z=>z>n/2|0);
+
+matrix = [
+    [1,0,1,0,1],
+    [1,1,1,0,1],
+    [0,1,1,0,0],
+    [1,0,0,0,1],
+    [0,0,1,1,0]];
+
+console.log(zeroOrOne(5,matrix));
 
 //snailCoordinate=n=>[,-n,2,-~n][n%4]/2|0
 //var promise = Promise.reject(function(){ return true;});

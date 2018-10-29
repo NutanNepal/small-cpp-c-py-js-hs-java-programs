@@ -48,9 +48,9 @@
                 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.12.25827\\include",
                 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\ucrt",
                 "$(UniversalCRT_IncludePath)",
-        "$(UniversalCRT_LibraryPath_x86)",
-        "$(UniversalCRT_LibraryPath_x64)",
-        "$(UniversalCRT_LibraryPath_arm)"
+                "$(UniversalCRT_LibraryPath_x86)",
+                "$(UniversalCRT_LibraryPath_x64)",
+                "$(UniversalCRT_LibraryPath_arm)"
             ],
             "defines": [
                 "_DEBUG",
@@ -61,13 +61,14 @@
                 "path": [
                     "${workspaceFolder}",
                     "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.12.25827\\include",
-                "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\ucrt"
-                    ],
+                    "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\ucrt"
+                ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         }
-        
     ],
-    "version": 3
+    "version": 4
 }
