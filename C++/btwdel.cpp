@@ -18,6 +18,7 @@ class Btree{
 	bool search(Node<T>* root, T t_data);
 	void  setHead(Node<T>* root);
 	Node<T>* deleteNode (Node<T>* root, T t_data);
+    Node<T>* pop(Node<T>* root, T t_data);
 	void deleteTree(Node<T>* root);
 	void displayAll(Node<T>* root);
 	~Btree();
@@ -62,54 +63,69 @@ bool Btree<T>::search(Node<T>* root, T t_data){
 template<class T>
 void  Btree<T>::setHead(Node<T>* root){head = root;}
 
-template<class T>
-
+template <class T>
 Node<T>* Btree<T>::deleteNode(Node<T>* root, T t_data){
-	
-	if(root==NULL){return root;}
-	else if(t_data<root->data)
-	{
-		deleteNode(root->left,t_data);	
+	if (root==NULL){
+		return root;
 	}
-	else if(t_data>root->data)
-	{
-		
-deleteNode(root->right,t_data);		
+	else if (t_data < root->data){
+		deleteNode(root->left, t_data);
 	}
-	else
-	{
-		if(root->left==NULL && root->right==NULL){
+	else if (t_data > root->data){
+		deleteNode(root->right, t_data);
+	}
+    else{
+		delete root;
+		return NULL;
+	}
+}
+
+template <class T>
+Node<T>* Btree<T>::pop(Node<T>* root, T t_data){
+	if (root==NULL){
+		return root;
+	}
+	else if (t_data < root->data){
+		pop(root->left, t_data);
+	}
+	else if (t_data > root->data){
+		pop(root->right, t_data);
+	}
+	else{
+		if(root->left == NULL && root->right == NULL){
 			delete root;
 			return NULL;
-		}else if(root->left == NULL){
-			Node<T>* tempNode = root;
-			root = root->right;
-			delete tempNode;
-		}else if(root->right == NULL){
-			Node<T>* tempNode = root;
-			root = root->left;
-			delete tempNode;
-		}else{
-			Node<T>* tempNode = root;
-			while(tempNode->left!=NULL){
-				tempNode = tempNode->left;
-			}
-			root->data = tempNode->data;
-			root->right = deleteNode(root->right,tempNode->data);	 
 		}
-		
-	}	
-		return root;	
+		else if(root->left == NULL){
+			Node<T>* temp = root;
+			root = root->right;
+			delete temp;
+		}
+		else if(root->right == NULL){
+			Node<T>* temp = root;
+			root = root->left;
+			delete temp;
+		}
+		else{
+			Node<T>* temp = root;
+			Node<T>* temp2 = root->right;
+			while (temp2->left != NULL){
+				temp2 = temp2->left;
+			}
+			temp2->left = root->left;
+			root = root->right;
+			delete temp;
+		}
+	}
+	return root;
 }
 
 template<class T>
 void Btree<T>::deleteTree(Node<T>* root){
-
-	if(root==NULL){return;}
-	else{
+	if(root!=NULL){
 		deleteTree(root->left);
 		deleteTree(root->right);
-		root = deleteNode(root,root->data);
+		root = deleteNode(root, root->data);
 	}
 }
 
@@ -124,8 +140,8 @@ void Btree<T>::displayAll(Node<T>* root) {
 
 template<class T>
 Btree<T>::~Btree(){
-	cout << "Destructor is called!!" <<  endl;
 	deleteTree(head);
+    cout << "Destructor is called!!" <<  endl;
 }
 
 int main(){
@@ -134,13 +150,13 @@ int main(){
 	
 	root = myTree.insert(root, 15);
 	root = myTree.insert(root, 10);
-	//root = myTree.insert(root, 20);
+	root = myTree.insert(root, 20);
 	root = myTree.insert(root, 8);
 	root = myTree.insert(root, 25);
 	root = myTree.insert(root, 12);
 	root = myTree.insert(root, 19);
 	root = myTree.insert(root,21);
-	//root = myTree.deleteNode(root,20);
+	//root = myTree.deleteNode(root,19);
 	if(myTree.search(root,19)){cout << "FOUND!!" << endl;}
 	else{cout << "NOT FOUND!!" << endl;}
 	cout << "wtf" << endl;

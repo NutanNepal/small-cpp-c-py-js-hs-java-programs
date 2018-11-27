@@ -21,4 +21,4 @@ def exp_sum(n):
         nextnum += 1
     return partitions[n]
 
-print(exp_sum(10))
+print(exp_sum(1000))
