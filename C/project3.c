@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 int main(){
     int fd[2];
     pipe(fd);
