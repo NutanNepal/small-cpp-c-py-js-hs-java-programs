@@ -50,7 +50,10 @@
             "deque": "cpp",
             "set": "cpp",
             "sstream": "cpp",
-            "stack": "cpp"
+            "stack": "cpp",
+            "list": "cpp",
+            "unordered_map": "cpp",
+            "xhash": "cpp"
         }
     }
 }
