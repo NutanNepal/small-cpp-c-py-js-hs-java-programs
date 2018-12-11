@@ -6,18 +6,25 @@
 #include <wait.h>
 #include <sys/resource.h>
 
+int flag = 1;
 void cont (int sig_num) {
-     
+     if (signum == SIGCONT){
+		 printf("process executing");
+		 flag = 0;
+	 }
 }
 
 void stop (int sig_num) {
-     pause();
+	if (sig_num == SIGSTP){
+    	printf("process suspended");
+		flag = 1;
+		pause();
+	}
 }
 
 
 int main (char *argc[], char *argv[]) {
-
-
+	
 	int i,num,sltime;
 
 	signal(SIGQUIT,cont);

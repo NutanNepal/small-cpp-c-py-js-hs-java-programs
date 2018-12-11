@@ -5,12 +5,10 @@ struct node {
 	
 };
 
-
 struct queue {				
        struct node *head;
        struct node *tail ;
 };
-
      
 void enqueue(int item, char *s, struct queue *q) {		
      struct node *p;						
@@ -27,7 +25,6 @@ void enqueue(int item, char *s, struct queue *q) {
 
 }
 
-
 int dequeue(struct queue *q) {		
     int item;				
     struct node *p;
@@ -38,7 +35,6 @@ int dequeue(struct queue *q) {
     free(p);
     return item;
 }
-
 
 void delete(struct queue *q, int key)
 {
@@ -67,8 +63,3 @@ void delete(struct queue *q, int key)
     }
     return;  
   }
-
-
-
-
-

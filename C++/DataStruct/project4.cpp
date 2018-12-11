@@ -10,6 +10,7 @@ struct Edge
 };
 
 std::set<std::set<unsigned int>> nodes;
+
 std::vector<Edge*> initialize_graph();
 bool add_nodes(unsigned int x, unsigned int y);
 void print_edges(std::vector<Edge*> min_tree);
@@ -36,11 +37,11 @@ std::vector<Edge*> initialize_graph()
 {
 	std::vector<Edge*> graph;   //initializing minHeap;
 	graph.push_back(new Edge(1, 7, 6));
-	graph.push_back(new Edge(2, 5, 6));
-	graph.push_back(new Edge(2, 2, 8));
-	graph.push_back(new Edge(4, 0, 1));
-	graph.push_back(new Edge(4, 2, 5));
-	graph.push_back(new Edge(6, 8, 6));
+	graph.push_back(new Edge(2, 5, 6));			//<1,2,2,4,4,6,7,7,8,8,9,10,11,14>
+	graph.push_back(new Edge(2, 2, 8));			//					1
+	graph.push_back(new Edge(4, 0, 1));			//			2				  2
+	graph.push_back(new Edge(4, 2, 5));			//		4		4		6			7
+	graph.push_back(new Edge(6, 8, 6));			//	7		8 8		9 10	11	14
 	graph.push_back(new Edge(7, 7, 8));
 	graph.push_back(new Edge(7, 2, 3));
 	graph.push_back(new Edge(8, 1, 2));
@@ -56,7 +57,7 @@ std::vector<Edge*> initialize_graph()
 bool add_nodes(unsigned int x, unsigned int y)
 {
 	if (nodes.empty()) {
-		std::set<unsigned int> X = { x, y };
+		std::set<unsigned int> X = { x, y };		//	{{7,6}}
 		nodes.insert(X);
 		return 1;
 	}
