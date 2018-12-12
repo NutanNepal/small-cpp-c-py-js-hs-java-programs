@@ -10,7 +10,7 @@ int PRESENT_YEAR;
 class Personnel {
 	string name;
 	int year_of_birth, age;
-	
+
 public:
 	Personnel(string n, int yob, int age) : name(n), year_of_birth(yob), age(age) {
 		;
@@ -41,7 +41,6 @@ int main() {
 		prompts(name, yob, age);
 		users.push_back(Personnel(name, yob, age));
 	}
-
 
 	ofstream writefile;
 	writefile.open("list.txt");

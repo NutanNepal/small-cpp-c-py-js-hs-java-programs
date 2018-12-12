@@ -20,7 +20,7 @@ def fib(n):
   while n:
     if n % 2 == 0:
       (a, b, c) = (a * a + b * b,
-                   a * b + b * c,
+                   a * b + b * c,           #n+1 = n + n-1 = 2(n-1) + n-2 = 3(n-3) + 2(N-2)
                    b * b + c * c)
       n /= 2
     else:
@@ -32,6 +32,6 @@ def fib(n):
 import time
 start = time.time()
 for _ in range (1):
-    print(fib(1000000))
+    fib(10000000)
 end = time.time()
 print("time = ", end - start)
