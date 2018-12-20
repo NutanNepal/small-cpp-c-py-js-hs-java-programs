@@ -1,3 +1,3 @@
 main = do
-    let primes = [x|x<-[1,2..20]]
-    print(primes)
+    let primes = [1,2..20]
+    print primes

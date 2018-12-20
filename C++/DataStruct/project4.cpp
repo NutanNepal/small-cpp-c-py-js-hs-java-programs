@@ -38,10 +38,10 @@ std::vector<Edge*> initialize_graph()
 	std::vector<Edge*> graph;   //initializing minHeap;
 	graph.push_back(new Edge(1, 7, 6));
 	graph.push_back(new Edge(2, 5, 6));			//<1,2,2,4,4,6,7,7,8,8,9,10,11,14>
-	graph.push_back(new Edge(2, 2, 8));			//					1
-	graph.push_back(new Edge(4, 0, 1));			//			2				  2
-	graph.push_back(new Edge(4, 2, 5));			//		4		4		6			7
-	graph.push_back(new Edge(6, 8, 6));			//	7		8 8		9 10	11	14
+	graph.push_back(new Edge(2, 2, 8));			//								1
+	graph.push_back(new Edge(4, 0, 1));			//				2					 			 2
+	graph.push_back(new Edge(4, 2, 5));			//		4				4				6				7
+	graph.push_back(new Edge(6, 8, 6));			//	7		8 		8		9 		10		11		14
 	graph.push_back(new Edge(7, 7, 8));
 	graph.push_back(new Edge(7, 2, 3));
 	graph.push_back(new Edge(8, 1, 2));
@@ -74,7 +74,8 @@ bool add_nodes(unsigned int x, unsigned int y)
 	return 1;
 }
 
-void manage_nodes() {
+void manage_nodes()
+{
 	std::set<std::set<unsigned int>>::iterator i, j;
 	std::set<unsigned int>::iterator k;
 	i = nodes.begin();
