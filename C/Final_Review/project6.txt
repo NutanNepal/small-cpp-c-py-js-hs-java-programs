@@ -1,0 +1,51 @@
+1.A
+page size = (add size/page size)*2
+So page size = 2^8 bytes = 256 bytes
+
+1.B
+page size = 2^8
+address space = 2^15
+so number of pages = 2^(15-8)= 128
+
+2.A
+addressable memory = 2^48 * 1 MB = 2^58 bytes
+
+2.B 
+size of the table = (2^64/2^10)*6 = 3*2^55 bytes
+
+3.
+We keep replacing the leasr recently used number:
+    2:  -   0   0   0
+    6:  2   -   0   0
+    1:  2   6   -   0
+    6:  2   v   1   0
+    4:  2   6   1   -
+    5:  -   6   1   4
+    8:  5   6   -   4
+    6:  5   v   8   4
+    8:  5   6   v   4
+    7:  5   6   8   -
+    4:  -   6   8   7
+    4:  v   6   8   7
+    5:  4   -   8   7
+    2:  4   5   -   7
+    4:  v   5   2   7
+    2:  4   5   v   7
+    5:  4   v   2   7
+    4:  v   5   2   7
+    1:  4   5   2   -
+    3:  4   5   -   1
+
+    On - we replace value in the frame with the current number.
+    v means valid lookup.
+
+4.
+0x83 = r8x + cx3 = dd
+0x83 + 0x21 = 0xA4 = rAx +cx4 = ee
+0x83 = 100 00011 = page_fault;
+0x21 = 001 00001 = 010 00001 = 0x41 = 4a
+victim 2 applicable = not modified = load_frame 1 = 010 00011 = 0x43
+    and 0x43 = 8d
+victim 5 applicable = write_back = load_frame 1 = 101 00011 = 0xA3
+    and 0xA3 = 8d
+0x21 = 001 00001 is good => 010 00001 = 0x41 = 4a
