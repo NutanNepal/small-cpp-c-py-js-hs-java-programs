@@ -15,7 +15,6 @@ def getprimefactors(denominator):
     primefactors = list(set(factors) - set([x for x in factors for y in factors if y < x and not x % y]))
     return primefactors
 
-    #[2, 3, 10, 15]
 def isPrime(num):
     """check for the primality of the number to avoid further
     unnecessary calculations
