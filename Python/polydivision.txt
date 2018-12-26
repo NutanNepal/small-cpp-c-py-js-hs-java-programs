@@ -1,0 +1,47 @@
+#input Function
+def  inputCoeff( exp ):
+    while True:
+        try:
+            print("what's the degree of the " + exp)
+            degree = int(input())
+            break
+        except ValueError:
+            print("Oops!  That was no valid number.  Try again...")
+
+    coeff = []
+    for index in range( 0, degree + 1 ):
+         while True:
+            try:
+                print("what the coeff of x^" + format(index))
+                coeff.append(int(input()))
+                break
+            except ValueError:
+                print("Oops!  That was no valid number.  Try again...")  
+    return coeff
+
+#main
+coeffDividend = inputCoeff( "dividend" )
+coeffDivisor = inputCoeff( "divisor" )
+
+tempDividend = coeffDividend
+Quot = [0.0] * (len(coeffDividend) - len(coeffDivisor) + 1)
+index = len(Quot)-1
+while len(tempDividend) - 1 >= len(coeffDivisor) - 1:
+    temp = [0.0] * len(tempDividend)
+    interQuot = float(tempDividend[-1]) /float(coeffDivisor[-1])
+    Quot[index] = interQuot
+    for index2 in range ( 0, len(coeffDivisor) - 1):
+        temp[index + index2] = coeffDivisor[index2] * interQuot
+
+    tempDividend2 = tempDividend
+    for index3 in range (0, len(tempDividend) - 1):
+            tempDividend[index3] = tempDividend[index3] - temp[index3]
+    index -= 1
+    del tempDividend[-1]
+
+if (degreeDivisor==1):
+    for index3 in range (0, len(tempDividend) - 1):
+        tempDividend[index3] = tempDividend[index3] - temp[index3]
+
+print("remainder is " + format(tempDividend))
+print("quotient is" + format(Quot))

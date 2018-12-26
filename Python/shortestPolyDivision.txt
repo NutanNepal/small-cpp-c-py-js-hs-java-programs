@@ -1,0 +1,20 @@
+coeffDividend = [float(x) for x in input("Dividend : ").split()]
+coeffDivisor = [float(x) for x in input("Divisor : ").split()]
+
+tempDividend = coeffDividend
+Quot = [0.0] * (len(coeffDividend) - len(coeffDivisor) + 1)
+index = len(Quot)-1
+while index >= 0:
+    temp = [0.0] * len(tempDividend)
+    interQuot = float(tempDividend[-1]) / float(coeffDivisor[-1])
+    Quot[index] = interQuot
+    for index2 in range ( 0, len(coeffDivisor) - 1):
+        temp[index + index2] = coeffDivisor[index2] * interQuot
+
+    for index3 in range (0, len(tempDividend) - 1):
+            tempDividend[index3] -= temp[index3]
+    index -= 1   
+    del tempDividend[-1]
+
+print("remainder is " + format(tempDividend))
+print("quotient is" + format(Quot))
