@@ -33,9 +33,11 @@ console.log(zeroOrOne(5,matrix));
 //console.log(myownrange(numbers, 2, 8));
 
 //modulus4;
-/*
+
 checkRange=(a,x,y)=>a.filter(z=>x<=z&z<=y).length
-checkRange=(a,x,y)=>a.filter(z=>!(x>z|z>y)).length
+/*checkRange=(a,x,y)=>a.filter(z=>!(x>z|z>y)).length
 checkRange=(a,x,y)=>a.reduce((z,c)=>x<=z&z<=y?c+1:c,0)
 */
 //console.log("what");
+
+console.log(checkRange([1,2,3,4,5,6], 2, 5));
